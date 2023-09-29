@@ -1,10 +1,14 @@
-import { Typography, Card, Box } from "@mui/material";
+import { Typography, Card, Button } from "@mui/material";
+import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 
 function ListWord() {
   return (
-    <Card sx={{ p: 2, mb:2 }}>
-      <Typography variant="h4" gutterBottom>
-        word
+    <Card sx={{ p: 1.5, mb: 2 }}>
+      <Button color="error" sx={{ position: "absolute", right: 15 }}>
+        <DeleteForeverIcon  />
+      </Button>
+      <Typography variant="h5" gutterBottom>
+        Word
       </Typography>
       <Typography variant="subtitle1" gutterBottom>
         Defintion definition definition definition definition definition
