@@ -1,9 +1,10 @@
 import Button from "@mui/material/Button";
+import Header from "./components/Header";
 
 function App() {
   return (
     <>
-      <Button>Hello world.</Button>
+      <Header></Header>
     </>
   );
 }
