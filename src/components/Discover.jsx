@@ -9,8 +9,11 @@ import {
 } from "@mui/material";
 import DiscoverWord from "./DiscoverWord";
 import ManageSearchIcon from "@mui/icons-material/ManageSearch";
+import { useState } from "react";
 
 function Discover() {
+  const [discoveredWord, setDiscoveredWord] = useState();
+
   function getRandomWord() {
     fetch("https://random-word-api.herokuapp.com/word")
       .then((response) => response.json())
@@ -23,9 +26,9 @@ function Discover() {
     fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         if (Array.isArray(data)) {
           console.log("Definition found. Stopping loop.");
+          setDiscoveredWord(data[0])
         } else {
           getRandomWord();
         }
@@ -55,7 +58,7 @@ function Discover() {
 
       <hr style={{ width: "90%" }}></hr>
       <Box sx={{ width: 1, px: 2, mt: 1 }}>
-        <DiscoverWord />
+        {discoveredWord && <DiscoverWord word={discoveredWord} />}
       </Box>
     </Box>
   );
