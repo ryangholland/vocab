@@ -13,6 +13,7 @@ import { useState } from "react";
 
 function Discover() {
   const [discoveredWord, setDiscoveredWord] = useState();
+  const [searchInput, setSearchInput] = useState("");
 
   function getRandomWord() {
     fetch("https://random-word-api.herokuapp.com/word")
@@ -28,11 +29,20 @@ function Discover() {
       .then((data) => {
         if (Array.isArray(data)) {
           console.log("Definition found. Stopping loop.");
-          setDiscoveredWord(data[0])
+          setDiscoveredWord(data[0]);
         } else {
           getRandomWord();
         }
       });
+  }
+
+  function handleSearchSubmit(e) {
+    e.preventDefault();
+    if (searchInput === "") return;
+
+    console.log(`Search submitted for: ${searchInput}`);
+
+    setSearchInput("");
   }
 
   return (
@@ -42,19 +52,23 @@ function Discover() {
       <Button variant="outlined" sx={{ mb: 2 }} onClick={() => getRandomWord()}>
         Random Word
       </Button>
-      <FormControl variant="standard">
-        <InputLabel htmlFor="input-with-icon-adornment">
-          Search for a word
-        </InputLabel>
-        <Input
-          id="input-with-icon-adornment"
-          startAdornment={
-            <InputAdornment position="start">
-              <ManageSearchIcon />
-            </InputAdornment>
-          }
-        />
-      </FormControl>
+      <form onSubmit={handleSearchSubmit}>
+        <FormControl variant="standard">
+          <InputLabel htmlFor="input-with-icon-adornment">
+            Search for a word
+          </InputLabel>
+          <Input
+            id="input-with-icon-adornment"
+            startAdornment={
+              <InputAdornment position="start">
+                <ManageSearchIcon />
+              </InputAdornment>
+            }
+            value={searchInput}
+            onChange={(e) => setSearchInput(e.target.value)}
+          />
+        </FormControl>
+      </form>
 
       <hr style={{ width: "90%" }}></hr>
       <Box sx={{ width: 1, px: 2, mt: 1 }}>
