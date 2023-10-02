@@ -19,19 +19,20 @@ function Discover() {
     fetch("https://random-word-api.herokuapp.com/word")
       .then((response) => response.json())
       .then((word) => {
-        fetchDefinition(word);
+        fetchDefinition(word, true);
       });
   }
 
-  function fetchDefinition(word) {
+  function fetchDefinition(word, isRandom) {
     fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
       .then((response) => response.json())
       .then((data) => {
         if (Array.isArray(data)) {
-          console.log("Definition found. Stopping loop.");
           setDiscoveredWord(data[0]);
         } else {
-          getRandomWord();
+          isRandom
+            ? getRandomWord()
+            : setDiscoveredWord({ word: "Word not found.", meanings: [null] });
         }
       });
   }
@@ -40,7 +41,7 @@ function Discover() {
     e.preventDefault();
     if (searchInput === "") return;
 
-    console.log(`Search submitted for: ${searchInput}`);
+    fetchDefinition(searchInput, false);
 
     setSearchInput("");
   }

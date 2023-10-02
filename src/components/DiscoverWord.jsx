@@ -8,13 +8,13 @@ function DiscoverWord({ word }) {
         {word.word}
       </Typography>
       <Typography variant="subtitle1" gutterBottom>
-        {word.meanings[0].definitions[0].definition}
+        {word.meanings[0]?.definitions[0].definition}
       </Typography>
       <Typography variant="subtitle1" sx={{ fontStyle: "italic" }} gutterBottom>
-        {word.meanings[0].definitions[0].example}
+        {word.meanings[0]?.definitions[0].example}
       </Typography>
       <Box display={"flex"} justifyContent={"center"}>
-        <Button variant="contained" size="small" color="success">Add to List</Button>
+        {word.meanings[0] && <Button variant="contained" size="small" color="success">Add to List</Button>}
       </Box>
     </Card>
   );
