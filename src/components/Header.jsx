@@ -4,10 +4,12 @@ import {
   Typography,
   ButtonGroup,
   Button,
+  Link,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import LocalLibraryIcon from "@mui/icons-material/LocalLibrary";
+import { Link as RouterLink } from "react-router-dom";
 
 function Header() {
   return (
@@ -24,13 +26,33 @@ function Header() {
             size="small"
           >
             <Button>
-              <FormatListBulletedIcon fontSize="small" />
-              &nbsp;My List
+              <Link
+                component={RouterLink}
+                to="/"
+                href="#"
+                color="inherit"
+                underline="none"
+                sx={{ display: "flex" }}
+              >
+                <FormatListBulletedIcon fontSize="small" />
+                &nbsp;My List
+              </Link>
             </Button>
+
             <Button>
-              <SearchIcon fontSize="small" />
-              &nbsp;Discover
+              <Link
+                component={RouterLink}
+                to="/discover"
+                href="#"
+                color="inherit"
+                underline="none"
+                sx={{ display: "flex" }}
+              >
+                <SearchIcon fontSize="small" />
+                &nbsp;Discover
+              </Link>
             </Button>
+
             <Button>
               <LocalLibraryIcon fontSize="small" />
               &nbsp;Practice
