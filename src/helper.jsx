@@ -16,7 +16,7 @@ const defaultList = [
     id: crypto.randomUUID(),
     word: "histrionics",
     definition:
-      "Exaggerated, overemotional behaviour, especially w…n calculated to elicit a response; melodramatics.",
+      "Exaggerated, overemotional behaviour, especially when calculated to elicit a response; melodramatics.",
     example: "I'm tired of Mary's histrionics.",
   },
 ];

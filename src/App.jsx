@@ -2,6 +2,7 @@ import { Box } from "@mui/material";
 import Header from "./components/Header";
 import VocabList from "./components/VocabList";
 import Discover from "./components/Discover";
+import Practice from "./components/Practice";
 import { Route, Routes } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { defaultList } from "./helper";
@@ -38,7 +39,7 @@ function App() {
   return (
     <>
       <Header />
-      <Box mt={14}>
+      <Box mt={15}>
         <Routes>
           <Route
             path="/"
@@ -50,6 +51,7 @@ function App() {
             path="/discover"
             element={<Discover handleAddWord={handleAddWord} />}
           ></Route>
+          <Route path="/practice" element={<Practice />}></Route>
         </Routes>
       </Box>
     </>

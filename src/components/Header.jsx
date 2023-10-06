@@ -54,8 +54,17 @@ function Header() {
             </Button>
 
             <Button>
-              <LocalLibraryIcon fontSize="small" />
-              &nbsp;Practice
+              <Link
+                component={RouterLink}
+                to="/practice"
+                href="#"
+                color="inherit"
+                underline="none"
+                sx={{ display: "flex" }}
+              >
+                <LocalLibraryIcon fontSize="small" />
+                &nbsp;Practice
+              </Link>
             </Button>
           </ButtonGroup>
         </Toolbar>

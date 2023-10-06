@@ -1,7 +1,6 @@
 import { Typography, Card, Button, Box } from "@mui/material";
 
 function DiscoverWord({ word, handleAddWord }) {
-  console.log(word);
   return (
     <Card sx={{ p: 1.5, mb: 2 }}>
       <Typography variant="h5" gutterBottom>
