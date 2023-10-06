@@ -3,11 +3,17 @@ import Header from "./components/Header";
 import VocabList from "./components/VocabList";
 import Discover from "./components/Discover";
 import { Route, Routes } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { defaultList } from "./helper";
 
 function App() {
-  const [words, setWords] = useState(defaultList);
+  const [words, setWords] = useState(
+    () => JSON.parse(localStorage.getItem("myWords")) ?? defaultList
+  );
+
+  useEffect(() => {
+    localStorage.setItem("myWords", JSON.stringify(words));
+  }, [words]);
 
   function handleDeleteWord(id) {
     setWords(
