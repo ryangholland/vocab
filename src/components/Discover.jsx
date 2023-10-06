@@ -10,12 +10,19 @@ import {
 } from "@mui/material";
 import DiscoverWord from "./DiscoverWord";
 import ManageSearchIcon from "@mui/icons-material/ManageSearch";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function Discover({ handleAddWord }) {
-  const [discoveredWord, setDiscoveredWord] = useState();
   const [searchInput, setSearchInput] = useState("");
   const [loading, setLoading] = useState(false);
+
+  const [discoveredWord, setDiscoveredWord] = useState(
+    () => JSON.parse(localStorage.getItem("discoveredWord")) ?? null
+  );
+
+  useEffect(() => {
+    localStorage.setItem("discoveredWord", JSON.stringify(discoveredWord));
+  }, [discoveredWord]);
 
   function getRandomWord() {
     setLoading(true);
