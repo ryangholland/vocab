@@ -1,7 +1,7 @@
 import { Typography, Card, Button, Box } from "@mui/material";
 
-function DiscoverWord({ word }) {
-  console.log(word)
+function DiscoverWord({ word, handleAddWord }) {
+  console.log(word);
   return (
     <Card sx={{ p: 1.5, mb: 2 }}>
       <Typography variant="h5" gutterBottom>
@@ -14,7 +14,16 @@ function DiscoverWord({ word }) {
         {word.meanings[0]?.definitions[0].example}
       </Typography>
       <Box display={"flex"} justifyContent={"center"}>
-        {word.meanings[0] && <Button variant="contained" size="small" color="success">Add to List</Button>}
+        {word.meanings[0] && (
+          <Button
+            variant="contained"
+            size="small"
+            color="success"
+            onClick={() => handleAddWord(word)}
+          >
+            Add to List
+          </Button>
+        )}
       </Box>
     </Card>
   );

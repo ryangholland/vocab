@@ -12,7 +12,7 @@ import DiscoverWord from "./DiscoverWord";
 import ManageSearchIcon from "@mui/icons-material/ManageSearch";
 import { useState } from "react";
 
-function Discover() {
+function Discover({ handleAddWord }) {
   const [discoveredWord, setDiscoveredWord] = useState();
   const [searchInput, setSearchInput] = useState("");
   const [loading, setLoading] = useState(false);
@@ -88,7 +88,9 @@ function Discover() {
             </Box>
           </>
         )}
-        {!loading && discoveredWord && <DiscoverWord word={discoveredWord} />}
+        {!loading && discoveredWord && (
+          <DiscoverWord word={discoveredWord} handleAddWord={handleAddWord} />
+        )}
       </Box>
     </Box>
   );
