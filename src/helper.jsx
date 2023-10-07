@@ -19,6 +19,37 @@ const defaultList = [
       "Exaggerated, overemotional behaviour, especially when calculated to elicit a response; melodramatics.",
     example: "I'm tired of Mary's histrionics.",
   },
+  {
+    id: crypto.randomUUID(),
+    word: "swarthy",
+    definition: "Of a dark color, complexion, or cast",
+    example: "a dark-eyed, swarthy young man with killer looks",
+  },
 ];
 
-export { defaultList }
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
+
+function generateQuestion(words) {
+  let wordsCopy = [...words];
+  const question = {
+    type: null,
+    answer: null,
+    wrongAnswers: [],
+    done: false,
+  };
+
+  question.type = getRandomInt(2) > 0 ? "word" : "definition";
+  question.answer = wordsCopy.splice(getRandomInt(wordsCopy.length), 1)[0];
+  for (let i = 0; i < 3; i++) {
+    question.wrongAnswers.push(
+      wordsCopy.splice(getRandomInt(wordsCopy.length), 1)[0]
+    );
+  }
+
+  console.log(question);
+  return question;
+}
+
+export { defaultList, generateQuestion };

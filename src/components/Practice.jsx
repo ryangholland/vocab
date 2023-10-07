@@ -1,6 +1,7 @@
 import { Typography, Box, Card, Button } from "@mui/material";
+import { generateQuestion } from "../helper";
 
-function Practice() {
+function Practice({ words }) {
   return (
     <Box display={"flex"} flexDirection={"column"} alignItems={"center"}>
       <Typography variant="h6">Practice</Typography>
@@ -31,7 +32,7 @@ function Practice() {
           This is another definition
         </Button>
 
-        <Button fullWidth variant="contained" sx={{ mt: 2, p: 2 }} disabled>
+        <Button fullWidth variant="contained" sx={{ mt: 2, p: 2 }} onClick={() => generateQuestion(words)} >
             Next Question
         </Button>
       </Box>

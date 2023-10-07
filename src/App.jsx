@@ -51,7 +51,7 @@ function App() {
             path="/discover"
             element={<Discover handleAddWord={handleAddWord} />}
           ></Route>
-          <Route path="/practice" element={<Practice />}></Route>
+          <Route path="/practice" element={<Practice words={words} />}></Route>
         </Routes>
       </Box>
     </>
