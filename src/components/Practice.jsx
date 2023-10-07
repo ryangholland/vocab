@@ -13,6 +13,17 @@ function Practice({ words }) {
     localStorage.setItem("myQuestion", JSON.stringify(question));
   }, [question]);
 
+  if (words.length < 4) {
+    return (
+      <Box display={"flex"} flexDirection={"column"} alignItems={"center"}>
+        <Typography variant="h6">Practice</Typography>
+        <hr style={{ width: "90%" }}></hr>
+        <Typography>Feature not available with less than 4 words.</Typography>
+        <Typography>Add more words to your list and try again.</Typography>
+      </Box>
+    );
+  }
+
   return (
     <Box display={"flex"} flexDirection={"column"} alignItems={"center"}>
       <Typography variant="h6">Practice</Typography>
