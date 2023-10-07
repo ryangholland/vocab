@@ -13,8 +13,6 @@ function Practice({ words }) {
     localStorage.setItem("myQuestion", JSON.stringify(question));
   }, [question]);
 
-  console.log(question);
-
   return (
     <Box display={"flex"} flexDirection={"column"} alignItems={"center"}>
       <Typography variant="h6">Practice</Typography>
@@ -41,9 +39,12 @@ function Practice({ words }) {
           return (
             <PracticeButton
               key={answer.id}
-              answer={
+              answerText={
                 question.type === "word" ? answer.definition : answer.word
               }
+              answer={answer}
+              question={question}
+              setQuestion={setQuestion}
             />
           );
         })}
@@ -53,6 +54,7 @@ function Practice({ words }) {
           variant="contained"
           sx={{ mt: 2, p: 2 }}
           onClick={() => setQuestion(generateQuestion(words))}
+          disabled={!question.done}
         >
           Next Question
         </Button>

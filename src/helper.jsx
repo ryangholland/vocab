@@ -7,9 +7,9 @@ const defaultList = [
   },
   {
     id: crypto.randomUUID(),
-    word: "defenstrate",
+    word: "defenestrate",
     definition:
-      "To eject or throw (someone or something) from a window; compare transfenestrate.",
+      "To eject or throw (someone or something) from a window.",
     example: null,
   },
   {
@@ -22,7 +22,7 @@ const defaultList = [
   {
     id: crypto.randomUUID(),
     word: "swarthy",
-    definition: "Of a dark color, complexion, or cast",
+    definition: "Of a dark color, complexion, or cast.",
     example: "a dark-eyed, swarthy young man with killer looks",
   },
 ];
