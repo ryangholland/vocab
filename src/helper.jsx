@@ -31,24 +31,33 @@ function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
 
+function shuffle(array) {
+  array.sort(() => Math.random() - 0.5);
+}
+
 function generateQuestion(words) {
   let wordsCopy = [...words];
   const question = {
     type: null,
-    answer: null,
+    correctAnswer: null,
     wrongAnswers: [],
+    allAnswers: [],
     done: false,
   };
 
   question.type = getRandomInt(2) > 0 ? "word" : "definition";
-  question.answer = wordsCopy.splice(getRandomInt(wordsCopy.length), 1)[0];
+  question.correctAnswer = wordsCopy.splice(getRandomInt(wordsCopy.length), 1)[0];
   for (let i = 0; i < 3; i++) {
     question.wrongAnswers.push(
       wordsCopy.splice(getRandomInt(wordsCopy.length), 1)[0]
     );
   }
+  question.allAnswers.push(question.correctAnswer)
+  question.wrongAnswers.forEach(answer => {
+    question.allAnswers.push(answer)
+  })
+  shuffle(question.allAnswers)
 
-  console.log(question);
   return question;
 }
 
